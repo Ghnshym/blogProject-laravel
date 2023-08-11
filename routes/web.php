@@ -15,9 +15,7 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[HomeController::class, 'homepage']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -25,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
 
-Route::get('post', [HomeController::class, 'post'])->middleware(['auth', 'admin']);
+// Route::get('post', [HomeController::class, 'post'])->middleware(['auth', 'admin']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
